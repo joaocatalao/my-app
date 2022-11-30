@@ -12,12 +12,18 @@ permissions:
   contents: read
 
 jobs:
-  - name: Upload To Github Release
-    uses: xresloader/upload-to-github-release@v1.3.9
-    env:
-      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-    with:
-      file: "*.jar"
-      overwrite: true
-      draft: true
-
+  update_release_draft:
+    permissions:
+      contents: write
+      pull-requests: write
+    runs-on: ubuntu-latest
+    steps:
+      - name: Upload To Github Release
+        uses: xresloader/upload-to-github-release@v1.3.9
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          file: "*.md;*.jar;"
+          branches: "main;develop"
+          overwrite: true
+          draft: true
