@@ -12,14 +12,12 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
-    - name: Build
-      run: cargo build --release
     - name: Upload binaries to release
       uses: svenstaro/upload-release-action@v2
       with:
         repo_token: ${{ secrets.GITHUB_TOKEN }}
-        file: target/release/mything
-        asset_name: mything
+        file: target/my-app-1.0.jar
+        asset_name: my-app-1.0
         tag: ${{ github.ref }}
         overwrite: true
         body: "This is my release text"
