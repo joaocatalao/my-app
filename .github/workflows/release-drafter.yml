@@ -27,3 +27,8 @@ jobs:
         uses: xresloader/upload-to-github-release@v1.3.9
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          file: "*.md;*.jar;"
+          branches: "main;develop"
+          verbose: true
+          prerelease: true
