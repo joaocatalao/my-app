@@ -1,5 +1,6 @@
-name-template: 'v$RESOLVED_VERSION'
-tag-template: 'v$RESOLVED_VERSION'
+name-template: '$RESOLVED_VERSION'
+tag-template: '$RESOLVED_VERSION'
+prerelease: true
 categories:
   - title: '🚀 Features'
     labels:
@@ -26,7 +27,7 @@ version-resolver:
   patch:
     labels:
       - 'patch'
-  default: patch
+  default: minor
 template: |
   ## Changes
 

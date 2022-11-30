@@ -4,10 +4,11 @@ on:
   push:
     branches:
       - master
-      - develop
   pull_request:
     types: [opened, reopened, synchronize]
-  
+  pull_request_target:
+    types: [opened, reopened, synchronize]
+
 permissions:
   contents: read
 
@@ -18,12 +19,8 @@ jobs:
       pull-requests: write
     runs-on: ubuntu-latest
     steps:
-      - name: Upload To Github Release
-        uses: xresloader/upload-to-github-release@v1.3.9
+      - uses: release-drafter/release-drafter@v5
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          file: "*.md;*.jar;"
-          branches: "master;develop"
-          overwrite: true
-          draft: true
+          prerelease: true
