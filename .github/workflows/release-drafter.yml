@@ -24,5 +24,9 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       
       - uses: svenstaro/upload-release-action@2.3.0
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          repo_token: ${{ secrets.GITHUB_TOKEN }}
+          file: target/my-app-1.0-SNAPSHOT.jar
+          asset_name: my-app-1.0-SNAPSHOT
+          tag: ${{ github.ref }}
+          overwrite: true
