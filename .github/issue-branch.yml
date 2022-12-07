@@ -1,0 +1,33 @@
+mode: auto
+
+silent: true
+
+defaultBranch: 'develop'
+
+branchName: short
+
+branches:
+  - label: [ feature ]
+    prefix: feature/
+
+  - label: [ bug ]
+    prefix: bugfix/
+
+  - label: [ documentation ]
+    prefix: documentation/
+
+  - label: '*'
+    prefix: issues/
+
+  - label: no-branch
+    skip: true
+
+commentMessage: 'Branch ${branchName} created for issue: ${issue.title}'
+
+openPR: true
+
+copyIssueDescriptionToPR: true
+copyIssueLabelsToPR: true
+copyIssueAssigneeToPR: true
+copyIssueProjectsToPR: false
+copyIssueMilestoneToPR: false
