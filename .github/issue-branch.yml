@@ -4,7 +4,7 @@ silent: true
 
 defaultBranch: 'develop'
 
-branchName: '${issue.number}/${issue.title,}'
+branchName: 'issue-${issue.number}/${issue.title,}'
 
 gitSafeReplacementChar: '-'
 
@@ -27,6 +27,7 @@ branches:
 commentMessage: 'Branch ${branchName} created for issue: ${issue.title}'
 
 openPR: true
+autoCloseIssue: true
 
 copyIssueDescriptionToPR: true
 copyIssueLabelsToPR: true
