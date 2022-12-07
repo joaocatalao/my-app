@@ -4,7 +4,9 @@ silent: true
 
 defaultBranch: 'develop'
 
-branchName: '${issue.number}/${issue.title}'
+branchName: '${issue.number}/${issue.title,}'
+
+gitSafeReplacementChar: '-'
 
 branches:
   - label: [ feature ]
