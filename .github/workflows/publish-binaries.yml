@@ -20,3 +20,4 @@ jobs:
         asset_name: my-app-1.0
         tag: ${{ github.ref }}
         overwrite: true
+        body: "This is my release text"
