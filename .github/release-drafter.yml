@@ -1,6 +1,6 @@
 name-template: '$RESOLVED_VERSION'
 tag-template: '$RESOLVED_VERSION'
-prerelease: 'true'
+pre-release: true
 categories:
   - title: '🚀 Features'
     labels:
