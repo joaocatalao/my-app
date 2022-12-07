@@ -1,6 +1,8 @@
 mode: auto
 
-silent: true
+silent: false
+
+commentMessage: 'Branch ${branchName} created for issue: ${issue.title}'
 
 defaultBranch: 'develop'
 
@@ -24,10 +26,8 @@ branches:
   - label: no-branch
     skip: true
 
-commentMessage: 'Branch ${branchName} created for issue: ${issue.title}'
-
-openPR: true
 autoCloseIssue: true
+openPR: true
 
 copyIssueDescriptionToPR: true
 copyIssueLabelsToPR: true
