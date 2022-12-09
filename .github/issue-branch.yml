@@ -2,7 +2,7 @@ mode: auto
 
 silent: false
 
-commentMessage: 'Branch ${branchName} created for issue: ${issue.title}'
+commentMessage: 'Branch ${branchName} created for issue: ${issue.number}-${issue.title}'
 
 defaultBranch: 'develop'
 
