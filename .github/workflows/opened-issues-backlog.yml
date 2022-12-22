@@ -13,4 +13,4 @@ jobs:
         with:
           project: Sprint
           column: Sprint Backlog
-          repo-token: ${{ secrets.GITHUB_TOKEN }}
+          repo-token: ${{ secrets.PROJECT_WORKFLOW_SECRET }}
