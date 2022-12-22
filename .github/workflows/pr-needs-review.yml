@@ -14,4 +14,4 @@ jobs:
         with:
           project: Sprint
           column: Needs Review
-          repo-token: ${{ secrets.GITHUB_TOKEN }}
+          repo-token: ${{ secrets.PROJECT_WORKFLOW_SECRET }}
