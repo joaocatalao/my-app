@@ -11,7 +11,9 @@ jobs:
       - name: GitHub Project Automation+
         uses: alex-page/github-project-automation-plus@v0.8.2
         with:
-          project: Sprint
-          column: Sprint Backlog
+          project: 
+            - 'Sprint'
+          column: 
+            - 'Sprint Backlog'
           repo-token: ${{ secrets.PROJECT_WORKFLOW_SECRET }}
           action: add
