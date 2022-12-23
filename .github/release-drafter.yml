@@ -16,8 +16,11 @@ categories:
   - title: '🧰 Maintenance'
     collapse-after: 5
     labels:
-      - 'chore'
       - 'wip'
+  - title: '🧰 Workflows'
+    collapse-after: 5
+    labels:
+      - 'workflows'
 exclude-labels:
   - 'skip-release'
 change-template: '- $TITLE @$AUTHOR (#$NUMBER)'
