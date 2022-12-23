@@ -14,3 +14,4 @@ jobs:
           project: Sprint
           column: Sprint Backlog
           repo-token: ${{ secrets.PROJECT_WORKFLOW_SECRET }}
+          action: add
