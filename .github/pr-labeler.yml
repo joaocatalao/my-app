@@ -1,4 +1,7 @@
-feature: ['feature/*', 'feat/*']
-fix: ['fix/*', 'bug-fix/*']
-chore: ['chore/*', 'maintenance/*', 'wip/*']
+#Define which labels the PR Labeler will add to PR's based on the branch name
+
+feature: ['feature/*']
+fix: ['bug-fix/*']
+wip: ['wip/*']
 skip-release: ['workflows']
+workflows: ['workflows']

@@ -17,4 +17,4 @@ jobs:
           column: 
             - 'Needs Review'
           repo-token: ${{ secrets.PROJECT_WORKFLOW_SECRET }}
-          action: update
+          action: add
