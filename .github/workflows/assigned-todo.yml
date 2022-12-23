@@ -10,9 +10,7 @@ jobs:
     steps:
       - uses: alex-page/github-project-automation-plus@v0.8.2
         with:
-          project: 
-            - 'Sprint'
-          column: 
-            - 'In Progress'
+          project: 'Sprint'
+          column: 'In Progress'
           repo-token: ${{ secrets.PROJECT_WORKFLOW_SECRET }}
           action: update
