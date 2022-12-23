@@ -12,9 +12,7 @@ jobs:
     steps:
       - uses: alex-page/github-project-automation-plus@v0.8.2
         with:
-          project: 
-            - 'Sprint'
-          column: 
-            - 'Needs Review'
+          project: 'Sprint'
+          column: 'Needs Review'
           repo-token: ${{ secrets.PROJECT_WORKFLOW_SECRET }}
           action: add
