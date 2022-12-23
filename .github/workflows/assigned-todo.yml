@@ -13,3 +13,4 @@ jobs:
           project: Sprint
           column: In_Progress
           repo-token: ${{ secrets.PROJECT_WORKFLOW_SECRET }}
+          action: update
