@@ -1,7 +1,7 @@
 #Define which labels the PR Labeler will add to PR's based on the branch name
 
 feature: ['feature/*']
-fix: ['bug-fix/*']
+fix: ['bugfix/*']
 wip: ['wip/*']
 skip-release: ['workflows']
 workflows: ['workflows']
