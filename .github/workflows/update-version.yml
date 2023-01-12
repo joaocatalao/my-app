@@ -34,4 +34,7 @@ jobs:
             }
 
       - name: Print milestone
-        run: print ${pr.milestone.title}
+        shell: bash
+        env:
+          milestone: 'bar'
+        run: print ${milestone}
