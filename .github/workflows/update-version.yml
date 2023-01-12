@@ -34,4 +34,4 @@ jobs:
             }
 
       - name: Print milestone
-        run: echo ${pr.milestone.title}
+        run: print ${pr.milestone.title}
