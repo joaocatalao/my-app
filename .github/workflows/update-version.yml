@@ -18,12 +18,17 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
       
-      - name: Get milestone information
-        run: |
-          curl -H "Authorization: token ${{ secrets.PROJECT_WORKFLOW_SECRET }}" https://api.github.com/repos/${{ env.GITHUB_REPOSITORY }}/milestones > milestones.json
-
-      - name: Set Milestone
-        run: |
-          milestone_name=$(jq -r '.[0].title' milestones.json)
-          echo "Milestone: ${milestone_name}"
-          env.MILESTONE_NAME = ${milestone_name}
+      - name: Check milestone
+        uses: actions/github-script@v5
+        with:
+          script: |
+            const { data } = await github.request("GET /repos/{owner}/{repo}/pulls/{pr}", {
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              pr: context.payload.pull_request.number
+            });
+            if (data.milestone) {
+              core.info(`This pull request has a milestone set: ${data.milestone.title}`);
+            } else {
+              core.setFailed(`A maintainer needs to set the milestone for this pull request.`);
+            }
