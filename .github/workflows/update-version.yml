@@ -36,5 +36,5 @@ jobs:
       - name: Print milestone
         shell: bash
         env:
-          milestone: milestone
-        run: print $milestone
+          milestone: ${pr.milestone.title}
+        run: echo $milestone
