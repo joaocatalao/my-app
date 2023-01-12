@@ -32,3 +32,6 @@ jobs:
             } else {
               core.setFailed(`A maintainer needs to set the milestone for this pull request.`);
             }
+
+      - name: Print milestone
+        run: echo ${pr.milestone.title}
