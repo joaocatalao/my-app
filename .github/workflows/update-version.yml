@@ -20,6 +20,6 @@ jobs:
       
       - name: Get milestone information
         run: |
-          MILESTONE_NUMBER=${{ github.event.milestone.number }}
-          MILESTONE_TITLE=${{ github.event.milestone.title }}
+          MILESTONE_NUMBER=${{ github.milestone.number }}
+          MILESTONE_TITLE=${{ github.milestone.title }}
           echo "Milestone ${MILESTONE_NUMBER} (${MILESTONE_TITLE}) has been ${{ github.event.action }}."
