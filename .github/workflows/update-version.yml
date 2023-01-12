@@ -18,7 +18,8 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
       
-      - name: Print milestone
-        run: ./bin/mac/updateversion.sh ${{ github.milestone }}
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Get milestone information
+        run: |
+          MILESTONE_NUMBER=${{ github.event.milestone.number }}
+          MILESTONE_TITLE=${{ github.event.milestone.title }}
+          echo "Milestone ${MILESTONE_NUMBER} (${MILESTONE_TITLE}) has been ${{ github.event.action }}."
