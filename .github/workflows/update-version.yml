@@ -14,7 +14,7 @@ jobs:
     - name: Get milestone
       id: get_milestone
       run: |
-        echo "$(jq -r '.pull_request.milestone.title' $GITHUB_EVENT_PATH)"
+        echo $(jq -r '.pull_request.milestone.title' $GITHUB_EVENT_PATH)
     - name: Use milestone
       run: |
         echo "Milestone: $MILESTONE_NAME"
