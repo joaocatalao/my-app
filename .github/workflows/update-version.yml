@@ -16,7 +16,7 @@ jobs:
       
       - name: Get Milestone
         id: get_milestone
-        uses: actions/github@v3
+        uses: actions/github@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
