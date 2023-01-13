@@ -9,32 +9,20 @@ on:
       - new-version
 
 jobs:
-  update:
+  get_milestone:
     runs-on: ubuntu-latest 
-    permissions: 
-      contents: read
-      packages: write 
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
       
-      - name: Check milestone
-        uses: actions/github-script@v5
-        with:
-          script: |
-            const { data } = await github.request("GET /repos/{owner}/{repo}/pulls/{pr}", {
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              pr: context.payload.pull_request.number
-            });
-            if (data.milestone) {
-              core.info(`This pull request has a milestone set: ${data.milestone.title}`);
-            } else {
-              core.setFailed(`A maintainer needs to set the milestone for this pull request.`);
-            }
-
-      - name: Print milestone
-        shell: bash
+      - name: Get Milestone
+        id: get_milestone
+        uses: actions/github@v2
         env:
-          milestone: ${pr.milestone.title}
-        run: echo $milestone
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          args: pull ${{ github.event.number }}
+    
+      - name: Get Milestone
+        run: echo "Milestone name: ${{ steps.get_milestone.outputs.milestone }}"
