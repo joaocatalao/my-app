@@ -11,17 +11,23 @@ jobs:
     runs-on: ubuntu-latest 
 
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
+    - uses: actions/checkout@v2
+
+    - name: Update POM Version
+      run: |
+        echo "Updating to version: $(jq -r '.pull_request.milestone.title' $GITHUB_EVENT_PATH)"
+        mvn versions:set -DnewVersion=$(jq -r '.pull_request.milestone.title' $GITHUB_EVENT_PATH)
+
+    - name: Setup github account
+      run: |
+        git config --global user.email "joaopcatalao@gmail.com"
+        git config --global user.name "Joao Catalao"
+
+    - name: Add changes to commit
+      run: git add .
+
+    - name: Commit version
+      run: git commit -am "Update POM version to $(jq -r '.pull_request.milestone.title' $GITHUB_EVENT_PATH)"
       
-      - name: Get Milestone
-        id: get_milestone
-        uses: actions/github@latest
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          args: pull ${{ github.event.number }}
-    
-      - name: Get Milestone
-        run: |
-          echo 'Milestone name: ${{ steps.get_milestone.outputs.milestone }}'
+    - name: Push changes
+      run: git push
