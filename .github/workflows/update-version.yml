@@ -14,14 +14,17 @@ jobs:
     - uses: actions/checkout@v2
 
     - name: Update POM Version
-      env:
-        new_version: $(jq -r '.pull_request.milestone.title' $GITHUB_EVENT_PATH)
       run: |
-        echo "Updating to version: ${new_version}"
+        echo "Updating to version: $(jq -r '.pull_request.milestone.title' $GITHUB_EVENT_PATH)"
         mvn versions:set -DnewVersion=$(jq -r '.pull_request.milestone.title' $GITHUB_EVENT_PATH)
 
-    - name: Commit version
-      run: git commit -am "Update POM version to 1.0.${{ env.BUILD_NUMBER }}"
+    - name: Setup github account
+      run: |
+        git config --global user.email "joaopcatalao@gmail.com"
+        git config --global user.name "Joao Catalao"
 
+    - name: Commit version
+      run: git commit -am "Update POM version to $(jq -r '.pull_request.milestone.title' $GITHUB_EVENT_PATH)"
+      
     - name: Push changes
       run: git push
