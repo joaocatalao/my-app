@@ -23,4 +23,5 @@ jobs:
           args: pull ${{ github.event.number }}
     
       - name: Get Milestone
-        run: echo "Milestone name: ${{ steps.get_milestone.outputs.milestone }}"
+        run: |
+          echo 'Milestone name: ${{ steps.get_milestone.outputs.milestone }}'
