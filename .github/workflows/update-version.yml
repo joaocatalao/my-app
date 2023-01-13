@@ -15,6 +15,8 @@ jobs:
       id: get_milestone
       run: |
         echo $(jq -r '.pull_request.milestone.title' $GITHUB_EVENT_PATH)
-    - name: Use milestone
-      run: |
-        echo "Milestone: $MILESTONE_NAME"
+    
+    - name: Update version
+      shell: bash
+      run: ./bin/mac/updateversion.sh $(jq -r '.pull_request.milestone.title' $GITHUB_EVENT_PATH)
+        
