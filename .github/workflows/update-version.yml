@@ -11,14 +11,10 @@ jobs:
     runs-on: ubuntu-latest 
 
     steps:
-      - name: Get Milestone
-        id: get_milestone
-        uses: actions/github@v2
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          args: pull ${{ github.event.number }}
-    
-      - name: Get Milestone
-        run: |
-          echo 'Milestone name: ${{ steps.get_milestone.outputs.milestone }}'
+    - name: Get milestone
+      id: get_milestone
+      run: |
+        echo "::set-env name=MILESTONE_NAME::$(jq -r '.pull_request.milestone.title' $GITHUB_EVENT_PATH)"
+    - name: Use milestone
+      run: |
+        echo "Milestone: $MILESTONE_NAME"
