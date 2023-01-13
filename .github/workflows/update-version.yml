@@ -19,5 +19,5 @@ jobs:
         mvn versions:set -DnewVersion=$(jq -r '.pull_request.milestone.title' $GITHUB_EVENT_PATH)
 
     - name: Commit changes
-      run: git config --local user.email "action@github.com" && git config --local user.name "GitHub Action" && git commit -am "Update POM version to ${INPUT_VERSION}"
+      run: git config --local user.email "joaopcatalao@gmail.com" && git config --local user.name "GitHub Action" && git commit -am "Update POM version to ${INPUT_VERSION}"
         
