@@ -12,11 +12,10 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
-    - name: Get milestone
-      id: get_milestone
-      run: |
-        echo $(jq -r '.pull_request.milestone.title' $GITHUB_EVENT_PATH)
 
-    - name: Update version
-      run: ./bin/mac/updateversion.sh $(jq -r '.pull_request.milestone.title' $GITHUB_EVENT_PATH)
+    - name: Update POM Version
+      run: mvn versions:set -DnewVersion=$(jq -r '.pull_request.milestone.title' $GITHUB_EVENT_PATH)
+
+    - name: Commit changes
+      run: git config --local user.email "action@github.com" && git config --local user.name "GitHub Action" && git commit -am "Update POM version to ${INPUT_VERSION}"
         
