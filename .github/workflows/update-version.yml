@@ -18,16 +18,17 @@ jobs:
         echo "Updating to version: $(jq -r '.pull_request.milestone.title' $GITHUB_EVENT_PATH)"
         mvn versions:set -DnewVersion=$(jq -r '.pull_request.milestone.title' $GITHUB_EVENT_PATH)
 
-    - name: Setup github account
-      run: |
-        git config --global user.email "joaopcatalao@gmail.com"
-        git config --global user.name "Joao Catalao"
+    - name: Commit
+        if: steps.verify_diff.outputs.changed == 'true'
+        run: |
+          git config --local user.email "joaopcatalao@gmail.com"
+          git config --local user.name "Github Actions"
+          git add .
+          git commit -m "Build" -a
 
-    - name: Add changes to commit
-      run: git add .
-
-    - name: Commit version
-      run: git commit -am "Update POM version to $(jq -r '.pull_request.milestone.title' $GITHUB_EVENT_PATH)"
-      
-    - name: Push changes
-      run: git push origin HEAD:master
+      - name: Push
+        if: steps.verify_diff.outputs.changed == 'true'
+        uses: ad-m/github-push-action@master
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          branch: ${{ github.ref }}
