@@ -11,11 +11,12 @@ jobs:
     runs-on: ubuntu-latest 
 
     steps:
+    - uses: actions/checkout@v2
     - name: Get milestone
       id: get_milestone
       run: |
         echo $(jq -r '.pull_request.milestone.title' $GITHUB_EVENT_PATH)
-    
+
     - name: Update version
       run: ./bin/mac/updateversion.sh
         
