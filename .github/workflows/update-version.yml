@@ -3,8 +3,6 @@ name: Update POM files version
 on:
   pull_request:
     types: [opened, reopened, synchronize]
-    labels: 
-      - new-version
 
 jobs:
   get_milestone:
@@ -24,7 +22,7 @@ jobs:
           git config --local user.email "joaopcatalao@gmail.com"
           git config --local user.name "Github Actions"
           git add .
-          git commit -m "Build" -a
+          git commit -m "Updated Version" -a
 
       - name: Push
         if: steps.verify_diff.outputs.changed == 'true'
