@@ -22,7 +22,7 @@ jobs:
           git config --local user.email "joaopcatalao@gmail.com"
           git config --local user.name "Github Actions"
           git add .
-          git commit -m "Updated POM's Version" -a
+          git commit -m "Updated Version" -a
 
       - name: Push
         if: steps.verify_diff.outputs.changed == 'true'
