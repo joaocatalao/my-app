@@ -9,7 +9,7 @@ jobs:
     runs-on: ubuntu-latest 
 
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v3
 
     - name: Update POM Version
       run: |
@@ -17,7 +17,6 @@ jobs:
         mvn versions:set -DnewVersion=$(jq -r '.pull_request.milestone.title' $GITHUB_EVENT_PATH)
 
     - name: Commit
-        if: steps.verify_diff.outputs.changed == 'true'
         run: |
           git config --local user.email "joaopcatalao@gmail.com"
           git config --local user.name "Github Actions"
@@ -25,7 +24,6 @@ jobs:
           git commit -m "Updated Version" -a
 
       - name: Push
-        if: steps.verify_diff.outputs.changed == 'true'
         uses: ad-m/github-push-action@master
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
