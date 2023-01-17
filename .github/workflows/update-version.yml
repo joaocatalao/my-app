@@ -6,7 +6,6 @@ on:
     branches:
       - develop
       - master
-      - workflows
 
 jobs:
   update_version:
