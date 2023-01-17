@@ -17,4 +17,9 @@ jobs:
         mvn versions:set -DnewVersion=$(jq -r '.pull_request.milestone.title' $GITHUB_EVENT_PATH)
 
     - name: Commit changes
-      run: git commit -am "Update version to $(jq -r '.pull_request.milestone.title' $GITHUB_EVENT_PATH)"
+      run: |
+        git config --local user.email "joaopcatalao@gmail.com"
+        git config --local user.name "GitHub Action"
+        git add .
+        git commit -m "Updating to version: $(jq -r '.pull_request.milestone.title' $GITHUB_EVENT_PATH)"
+        git push origin master
