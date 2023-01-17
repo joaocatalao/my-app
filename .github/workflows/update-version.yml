@@ -22,4 +22,4 @@ jobs:
         git config --local user.name "GitHub Action"
         git add .
         git commit -m "Updating to version: $(jq -r '.pull_request.milestone.title' $GITHUB_EVENT_PATH)"
-        git push origin master
+        git push origin main
