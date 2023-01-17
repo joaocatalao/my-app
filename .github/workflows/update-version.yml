@@ -24,4 +24,4 @@ jobs:
       with:
         add: '.'
         default_author: github_actions
-        push: git push origin HEAD:develop
+        push: origin develop --force
