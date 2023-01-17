@@ -15,10 +15,3 @@ jobs:
       run: |
         echo "Updating to version: $(jq -r '.pull_request.milestone.title' $GITHUB_EVENT_PATH)"
         mvn versions:set -DnewVersion=$(jq -r '.pull_request.milestone.title' $GITHUB_EVENT_PATH)
-
-    - name: Commit changes
-        uses: EndBug/add-and-commit@v9
-        with:
-          author_name: Github
-          author_email: joaopcatalao@gmail.com
-          message: 'Updated version'
