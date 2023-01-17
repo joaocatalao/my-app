@@ -20,7 +20,8 @@ jobs:
       run: |
         git config --local user.email "joaopcatalao@gmail.com"
         git config --local user.name "GitHub Action"
+        git config pull.rebase true
         git pull origin HEAD:master
         git add .
-        git commit -m "Updating to version: $(jq -r '.pull_request.milestone.title' $GITHUB_EVENT_PATH)"
+        git commit -m "Updating version"
         git push origin HEAD:master
