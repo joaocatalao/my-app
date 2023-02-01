@@ -33,6 +33,7 @@ branches:
       - 'minor'
     name: develop
     prTarget: master
+    skip: true
     
   - label: 
     - 'patch'
