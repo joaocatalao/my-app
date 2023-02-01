@@ -16,21 +16,35 @@ branches:
 
   - label: [ bug ]
     prefix: bugfix/
-
+  
   - label: [ documentation ]
     prefix: documentation/
+
+  - label: [ testing ]
+    prefix: testing/
+    skip: true
 
   - label: '*'
     prefix: issues/
 
   - label: 
       - 'major'
-      - 'minor'
-      - 'patch'
-    skip: true
+    name: develop
+    prTarget: master
 
+  - label: 
+      - 'minor'
+    name: develop
+    prTarget: master
+    
+  - label: 
+    - 'patch'
+    name: develop
+    prTarget: master
+      
+
+openDraftPR: true
 autoCloseIssue: true
-openPR: true
 
 copyIssueDescriptionToPR: true
 copyIssueLabelsToPR: true
