@@ -26,17 +26,22 @@ branches:
 
   - label: 
       - 'major'
+    prefix: release/
+    branchName: '${issue.title,}'
     name: develop
     prTarget: master
 
   - label: 
       - 'minor'
+    prefix: release/
+    branchName: '${issue.title,}'
     name: develop
     prTarget: master
-    skip: true
     
   - label: 
     - 'patch'
+    prefix: release/
+    branchName: '${issue.title,}'
     name: develop
     prTarget: master
       
