@@ -24,9 +24,6 @@ branches:
     prefix: testing/
     skip: true
 
-  - label: '*'
-    prefix: issues/
-
   - label: 
       - 'major'
     name: develop
