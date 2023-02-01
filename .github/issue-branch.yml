@@ -22,18 +22,28 @@ branches:
 
   - label: [ testing ]
     prefix: testing/
+    skip: true
 
   - label: '*'
     prefix: issues/
 
   - label: 
       - 'major'
-      - 'minor'
-      - 'patch'
     name: develop
     prTarget: master
 
-openPR: true
+  - label: 
+      - 'minor'
+    name: develop
+    prTarget: master
+    
+  - label: 
+    - 'patch'
+    name: develop
+    prTarget: master
+      
+
+openDraftPR: true
 autoCloseIssue: true
 
 copyIssueDescriptionToPR: true
