@@ -24,26 +24,14 @@ branches:
     prefix: testing/
     skip: true
 
-  - label: 
-      - 'major'
-    prefix: release/
-    branchName: '${issue.title,}'
-    name: develop
-    prTarget: master
+  - label: [ major ]
+    skip: true
 
-  - label: 
-      - 'minor'
-    prefix: release/
-    branchName: '${issue.title,}'
-    name: develop
-    prTarget: master
+  - label: [ minor ]
+    skip: true
     
-  - label: 
-    - 'patch'
-    prefix: release/
-    branchName: '${issue.title,}'
-    name: develop
-    prTarget: master
+  - label: [ patch ]
+    skip: true
       
 
 openDraftPR: true

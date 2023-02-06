@@ -2,7 +2,7 @@ name: Update POM files version
 
 on:
   pull_request:
-    types: [opened, reopened, synchronize]
+    types: [opened, reopened, synchronize, assigned]
     branches:
       - '!workflows'
       - master
@@ -10,6 +10,8 @@ on:
 jobs:
   update_version:
     runs-on: ubuntu-latest 
+
+    if: contains(github.event.pull_request.labels.*.name, 'run-tests')
 
     steps:
     - uses: actions/checkout@v3
