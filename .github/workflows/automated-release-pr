@@ -2,7 +2,7 @@ name: Automatic Pull Request
 
 on:
   issues:
-    types: [opened]
+    types: [ opened, synchronize, assigned ]
 
 jobs:
   create_pull_request:
@@ -10,7 +10,10 @@ jobs:
     
     steps:
     - name: Checkout code
-      uses: actions/checkout@v2
+      uses: actions/checkout@v3
+    
+    - name: Test action
+      run: echo "testing"
 
     - name: Create Pull Request
       uses: peter-evans/create-pull-request@v2
