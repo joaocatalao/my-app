@@ -24,21 +24,14 @@ branches:
     prefix: testing/
     skip: true
 
-  - label: 
-      - 'major'
-    name: develop
-    prTarget: master
+  - label: [ major ]
+    skip: true
 
-  - label: 
-      - 'minor'
-    name: develop
-    prTarget: master
+  - label: [ minor ]
     skip: true
     
-  - label: 
-    - 'patch'
-    name: develop
-    prTarget: master
+  - label: [ patch ]
+    skip: true
       
 
 openDraftPR: true
