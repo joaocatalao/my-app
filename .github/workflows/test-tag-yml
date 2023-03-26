@@ -1,8 +1,6 @@
 on:
   release:
     types: [ released ]
-    tags:
-      - '*.*.*'
 jobs:
   github-example-tags:
     steps:
