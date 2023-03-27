@@ -33,9 +33,11 @@ jobs:
 
       - name: Upload binaries to release
         uses: svenstaro/upload-release-action@v2
+        env: 
+          DEPLOY_TOKEN: ${{ secrets.DEPLOY_TOKEN }}
         with:
-          repo_token: ${{ secrets.DEPLOY_TOKEN }}
-          file: './target/my-app*'
+          repo_token: $DEPLOY_TOKEN
+          file: ./target/my-app*
           asset_name: mything
           tag: ${{ github.ref_name }}
           overwrite: true
