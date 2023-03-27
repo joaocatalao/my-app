@@ -34,13 +34,11 @@ jobs:
       - name: Upload binaries to release
         uses: svenstaro/upload-release-action@v2
         with:
-          repo_name: joaocatalao/my-app
           repo_token: ${{ secrets.DEPLOY_TOKEN }}
           file: './target/my-app*'
           asset_name: mything
           tag: ${{ github.ref_name }}
           overwrite: true
-          file_glob: true
 
       - name: Publish package
         run: mvn clean deploy
