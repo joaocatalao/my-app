@@ -29,18 +29,17 @@ jobs:
 
       - name: Find file
         run: |
-          cd target & 
-          ls
+          cd ./target & ls
 
       - name: Upload binaries to release
         uses: svenstaro/upload-release-action@v2
         with:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
-          file: './target/*.jar'
+          file: './target/my-app*'
           asset_name: mything
           tag: ${{ github.ref_name }}
           overwrite: true
-          body: "This is my release text"
+          file_glob: true
 
       - name: Publish package
         run: mvn clean deploy
