@@ -45,4 +45,4 @@ jobs:
       - name: Publish package
         run: mvn clean deploy
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.DEPLOY_TOKEN }}
