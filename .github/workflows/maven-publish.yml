@@ -29,11 +29,12 @@ jobs:
 
       - name: Find file
         run: |
-          cd ./target & ls
+          cd ./target & ls & cd ./target & ls
 
       - name: Upload binaries to release
         uses: svenstaro/upload-release-action@v2
         with:
+          repo_name: joaocatalao/my-app
           repo_token: ${{ secrets.GITHUB_TOKEN }}
           file: './target/my-app*'
           asset_name: mything
