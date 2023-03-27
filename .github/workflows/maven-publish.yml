@@ -25,7 +25,7 @@ jobs:
           distribution: 'adopt'
 
       - name: Build application
-        run: mvn build
+        run: mvn clean install
 
       - name: Upload binaries to release
         uses: svenstaro/upload-release-action@v2
