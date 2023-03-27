@@ -35,7 +35,7 @@ jobs:
         uses: svenstaro/upload-release-action@v2
         with:
           repo_name: joaocatalao/my-app
-          repo_token: ${{ secrets.GITHUB_TOKEN }}
+          repo_token: ${{ secrets.PROJECT_WORKFLOW_SECRET }}
           file: './target/my-app*'
           asset_name: mything
           tag: ${{ github.ref_name }}
