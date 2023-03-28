@@ -27,20 +27,15 @@ jobs:
       - name: Build application
         run: mvn clean install
 
-      - name: Find file
-        run: |
-          cd ./target & ls & cd ./target & ls
-
       - name: Upload binaries to release
-        uses: xresloader/upload-to-github-release@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.DEPLOY_TOKEN }}
+        uses: svenstaro/upload-release-action@v2
         with:
-          file: "./target/*.jar"
-          update_latest_release: true
+          repo_token: ${{ secrets.GITHUB_TOKEN }}
+          file: "target/my-app-*.jar"
+          asset_name: my-app
+          tag: ${{ github.ref }}
           overwrite: true
-          tags: true
-          draft: true
+          body: "This is my release text"
 
       - name: Publish package
         run: mvn clean deploy
