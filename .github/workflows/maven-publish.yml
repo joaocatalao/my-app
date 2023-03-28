@@ -32,15 +32,15 @@ jobs:
           cd ./target & ls & cd ./target & ls
 
       - name: Upload binaries to release
-        uses: svenstaro/upload-release-action@v2
-        env: 
-          DEPLOY_TOKEN: ${{ secrets.DEPLOY_TOKEN }}
+        uses: xresloader/upload-to-github-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          repo_token: $DEPLOY_TOKEN
-          file: ./target/my-app*
-          asset_name: mything
-          tag: ${{ github.ref_name }}
+          file: "*.jar"
+          update_latest_release: true
           overwrite: true
+          tags: true
+          draft: true
 
       - name: Publish package
         run: mvn clean deploy
