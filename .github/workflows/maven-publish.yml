@@ -31,11 +31,10 @@ jobs:
         uses: svenstaro/upload-release-action@v2
         with:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
-          file: "target/my-app-*.jar"
+          file: pom.xml
           asset_name: my-app
-          tag: ${{ github.ref }}
+          tag: ${{ github.ref_name }}
           overwrite: true
-          body: "This is my release text"
 
       - name: Publish package
         run: mvn clean deploy
