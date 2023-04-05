@@ -1,0 +1,17 @@
+ame: Build and push Docker image to AWS
+
+on:
+  push:
+    branches:
+      - 'workflows'
+
+jobs:
+    delete_packages:
+        runs-on: ubuntu-latest
+
+    - uses: actions/delete-package-versions@v4
+      with:
+        package-version-ids: '3.0.0'
+        package-name: 'my-app'
+        package-type: 'maven'
+        min-versions-to-keep: 5
