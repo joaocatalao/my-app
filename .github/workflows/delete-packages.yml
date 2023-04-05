@@ -12,6 +12,6 @@ jobs:
         steps:
             - uses: actions/delete-package-versions@v4
               with:
-                package-name: 'my-app'
+                package-name: 'com.joaocatalao.app.my-app'
                 package-type: 'maven'
                 min-versions-to-keep: 5
