@@ -14,4 +14,4 @@ jobs:
               with:
                 package-name: 'com.joaocatalao.app.my-app'
                 package-type: 'maven'
-                min-versions-to-keep: 5
+                min-versions-to-keep: 2
