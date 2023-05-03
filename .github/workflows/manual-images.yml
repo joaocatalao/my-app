@@ -12,14 +12,13 @@ on:
           - master
   
 jobs:
-  log-the-inputs:
+  backend:
+    name: Manual backend build
+
     runs-on: ubuntu-latest
+  
     steps:
-    - run: |
-        echo "Log level: $LEVEL"
-        echo "Tags: $TAGS"
-        echo "Environment: $ENVIRONMENT"
-        env:
-        LEVEL: ${{ inputs.logLevel }}
-        TAGS: ${{ inputs.tags }}
-        ENVIRONMENT: ${{ inputs.environment }}
+      - name: Checkout the repository
+        uses: actions/checkout@v2
+        with:
+          ref: ${{ inputs.BRANCH }}
