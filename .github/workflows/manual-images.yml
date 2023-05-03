@@ -19,6 +19,16 @@ jobs:
   
     steps:
       - name: Checkout the repository
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
         with:
           ref: ${{ inputs.BRANCH }}
+          
+      - uses: actions/setup-java@v3
+        with:
+          java-version: '11'
+          distribution: 'temurin'
+      
+      - name: Publish package
+        run: echo "Yay published"
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
