@@ -5,18 +5,15 @@ on:
     types: [ released ]
 
 jobs:
-    test_version:
-        name: Checkout the code
+  test_version:
+    steps:
+      - name: Checkout the code
         runs-on: ubuntu-latest
         steps:
           - name: Checkout code
             uses: actions/checkout@v3
     
-          - name: Get release
-            id: get_release
-            uses: bruceadams/get-release@v1.3.2
-            env:
-              GITHUB_TOKEN: ${{ github.token }}
-    
-          - name: Build binary
-            run: echo ${{  github.tag_name }}
+      - name: GitHub Tag Name example
+        run: |
+            echo "Tag name from GITHUB_REF_NAME: $GITHUB_REF_NAME"
+            echo "Tag name from github.ref_name: ${{  github.ref_name }}"
