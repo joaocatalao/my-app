@@ -1,0 +1,19 @@
+name: Test release version
+
+on:
+  release:
+    types: [ released ]
+
+jobs:
+  test_version:
+    steps:
+      - name: Checkout the code
+        runs-on: ubuntu-latest
+        steps:
+          - name: Checkout code
+            uses: actions/checkout@v3
+    
+      - name: GitHub Tag Name example
+        run: |
+            echo "Tag name from GITHUB_REF_NAME: $GITHUB_REF_NAME"
+            echo "Tag name from github.ref_name: ${{  github.ref_name }}"
