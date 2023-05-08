@@ -1,0 +1,22 @@
+name: Test release version
+
+on:
+  release:
+    types: [ released ]
+
+jobs:
+    test_version:
+        name: Checkout the code
+        runs-on: ubuntu-latest
+        steps:
+          - name: Checkout code
+            uses: actions/checkout@v3
+    
+          - name: Get release
+            id: get_release
+            uses: bruceadams/get-release@v1.3.2
+            env:
+              GITHUB_TOKEN: ${{ github.token }}
+    
+          - name: Build binary
+            run: echo ${tag_name}
