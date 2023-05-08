@@ -19,4 +19,4 @@ jobs:
               GITHUB_TOKEN: ${{ github.token }}
     
           - name: Build binary
-            run: echo ${tag_name}
+            run: echo ${{  github.tag_name }}
