@@ -1,0 +1,34 @@
+name: Manual Images
+
+on:
+  workflow_dispatch:
+    inputs:
+      BRANCH:
+        required: true
+        default: 'workflows'
+        type: choice
+        options:
+          - workflows
+          - master
+  
+jobs:
+  backend:
+    name: Manual backend build
+
+    runs-on: ubuntu-latest
+  
+    steps:
+      - name: Checkout the repository
+        uses: actions/checkout@v3
+        with:
+          ref: ${{ inputs.BRANCH }}
+          
+      - uses: actions/setup-java@v3
+        with:
+          java-version: '11'
+          distribution: 'temurin'
+      
+      - name: Publish package
+        run: echo "Yay published"
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
